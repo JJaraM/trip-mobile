@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Welcome</ion-title>
+</ion-navbar>
+
+<ion-content class="welcome">
+    <ion-slides pager loop="false" autoplay="false" index="1">
+        <ion-slide padding>
+            <div class="destination">Add new destination</div>
+            <a href="#" class="translucent ui-draggable ui-draggable-handle plus add">
+              <div class="circle-add" (click)="createTrip()">+</div>
+            </a>
+        </ion-slide>
+        <!--<ion-slide padding>
+            <img src="images/brokers.svg"/>
+            <p>Ionic Realty has the best brokers in the business. Open the menu and select <strong>Brokers</strong> to connect with our brokers in a whole new way!</p>
+        </ion-slide>-->
+    </ion-slides>
+</ion-content>

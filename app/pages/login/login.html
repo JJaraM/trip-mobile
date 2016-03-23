@@ -1,0 +1,31 @@
+<ion-content class="login-bg">
+  <div class="login">
+    <div class="logo">
+      <div class="hex hex-1 hex-gap">
+    		<h4>{{ 'application.letter' | translate }}</h4>
+    		<div class="corner-1"></div>
+    		<div class="corner-2"></div>
+    	</div>
+    </div>
+    <div class="slogan">
+      <p>{{ 'application.description' | translate }}</p>
+    </div>
+    <div [hidden]="active" class="input-group">
+      <button (click)="signIn()">{{ 'login.signIn' | translate }}</button>
+      <button (click)="signUp()">{{ 'login.signUp' | translate }}</button>
+    </div>
+
+    <div class="hide input-group" id="signIn">
+      <div class="text-group">
+        <input type="email" placeholder="{{ 'global.emailAddress' | translate}}" [(ngModel)]="email"/>
+        <input type="password" placeholder="{{ 'global.password' | translate}}" [(ngModel)]="password"/>
+      </div>
+      <div class="input-group buttons">
+        <button (click)="signIn()">{{ 'login.signIn' | translate }}</button>
+      </div>
+      <button (click)="signUp()" class="no-account small">{{ 'login.noAccount' | translate}}</button>
+    </div>
+
+    <div [hidden]="active" class="terms small">{{ 'login.terms' | translate}}</div>
+  </div>
+</ion-content>

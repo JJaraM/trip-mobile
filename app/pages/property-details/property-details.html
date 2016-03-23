@@ -1,0 +1,40 @@
+<ion-toolbar>
+  <ion-title>
+    Let's go
+  </ion-title>
+  <ion-buttons start>
+    <button (click)="dismiss()">
+      <span primary showWhen="ios">Cancel</span>
+      <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content class="create-trip">
+  <ion-row>
+    <ion-col width-50>Destination</ion-col>
+    <ion-col width-50 class="right">{{country.name}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col width-50>Do you know the dates?</ion-col>
+    <ion-col width-50 class="right">
+       <ion-toggle danger [(ngModel)]="dateChange" (click)="changeKnowDates()"></ion-toggle>
+    </ion-col>
+  </ion-row>
+  <ion-row [hidden]="!dateChange">
+    <ion-col width-50>Start date</ion-col>
+    <ion-col width-50 class="right">
+      <button (click)="startDate()">{{ startDate | date:'yMMMMd' }}</button>
+    </ion-col>
+  </ion-row>
+  <ion-row [hidden]="!dateChange">
+    <ion-col width-50>End date</ion-col>
+    <ion-col width-50 class="right">
+      <button (click)="startDate()">{{ startDate | date:'yMMMMd' }}</button>
+    </ion-col>
+  </ion-row>
+
+  <a href="#" class="btn-translucent">
+    <div>Create trip</div>
+  </a>
+
+</ion-content>

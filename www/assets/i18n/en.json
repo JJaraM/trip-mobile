@@ -1,0 +1,17 @@
+{
+  "application":{
+    "letter": "T",
+    "name": "Trip Helper",
+    "description": "The most excting travel experience"
+  },
+  "login": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "noAccount": "I do not have account",
+    "terms": "By Signin up, I agree to Trip Helper Term of Service, Privacy Policy"
+  },
+  "global" : {
+    "emailAddress" : "Email address",
+    "password" : "Password"
+  }
+}

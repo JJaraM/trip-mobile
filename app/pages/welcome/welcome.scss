@@ -1,0 +1,178 @@
+.welcome {
+
+  font-weight: light;
+
+  background: url("../img/bg/bg4.jpg") no-repeat 50% 50% fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  font: 14px/1.4 Helvetica, Arial, sans-serif;
+  overflow: hidden;
+
+  img {
+    margin-bottom: 28px;
+  }
+
+  p {
+    padding: 0 20px;
+  }
+
+}
+
+.welcome:before{
+  visibility: visible;
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  bottom: -5%;
+  background: inherit;
+  -webkit-filter: url("#blur") saturate(2);
+  -moz-filter: url("#blur");
+  filter: url("#blur");
+}
+
+.toolbar-background {
+  background-color: #f1f1f1;
+}
+
+.translucent {
+  width: 400px;
+  position: fixed;
+  display: block;
+  line-height: 120px;
+  top: 50%;
+  left: 50%;
+  background: inherit;
+  -webkit-border-radius: 60px;
+  border-radius: 60px;
+  overflow: hidden;
+  color: #FFF;
+  margin: -60px -200px;
+  text-decoration: none;
+  font-size: 40px;
+  visibility: hidden;
+}
+
+.translucent:before {
+  visibility: visible;
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  bottom: -5%;
+  background: inherit;
+  -webkit-filter: url("#blur") saturate(2);
+  -moz-filter: url("#blur");
+  filter: url("#blur");
+}
+.translucent div {
+  background: rgba(235,235,235,0.6);
+  text-align: center;
+  position: relative;
+  display: block;
+  visibility: visible;
+  -webkit-transition: background 0.3s ease;
+  -moz-transition: background 0.3s ease;
+  -o-transition: background 0.3s ease;
+  -ms-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+.translucent div:hover {
+  background: rgba(235,235,235,0.54);
+}
+
+.plus {
+  width: initial;
+}
+
+.add {
+  margin-left: -15%;
+}
+
+.circle-add {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  font-size: 2em;
+  line-height: 1.40;
+}
+
+.destination {
+  margin-top: -33%;
+  color:#FFF;
+}
+
+.swiper-pagination-bullet {
+  background: #FFF;
+}
+
+.searchbar-input {
+  width: 26em;
+}
+
+.create-trip {
+
+
+  scroll-content {
+    background: #f4f4f4;
+  }
+
+  ion-row {
+    background: #FFF;
+    border-bottom: solid 6px;
+    border-color: #f4f4f4;
+    height: 8%;
+    font-size: 1.1em;
+  }
+
+  ion-row .right {
+    text-align: right;
+    color: #000;
+  }
+
+  .btn-translucent {
+    width: 50%;
+    position: absolute;
+    display: block;
+    line-height: 42px;
+    left: 25%;
+    border-radius: 60px;
+    overflow: hidden;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0;
+    position: relative;
+    margin-top: 5%;
+  }
+
+  .btn-translucent div {
+    background: rgba(255, 103, 95, 0.6);
+    text-align: center;
+
+  }
+
+
+  ion-toggle[danger] .toggle-checked {
+    background-color: rgba(255, 103, 95, 0.6);
+  }
+
+  .toggle-icon {
+      left: 72%;
+  }
+
+  .button, .button:hover {
+    color: #000;
+    border: 0;
+    font-size: inherit;
+    padding: 0;
+  }
+
+  .ios .button {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
