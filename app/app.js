@@ -4,6 +4,7 @@ import {PropertyListPage} from './pages/property-list/property-list';
 import {BrokerListPage} from './pages/broker-list/broker-list';
 import {FavoriteListPage} from './pages/favorite-list/favorite-list';
 import {PropertyService} from './services/property-service';
+import {LoginService} from './services/loginService';
 import {BrokerService} from './services/broker-service';
 import {LoginPage} from './pages/login/login';
 import {provide} from 'angular2/core';
@@ -17,7 +18,7 @@ import {DatePicker} from 'ionic-native';
   config: {},
   providers:
   [
-    PropertyService, BrokerService,
+    PropertyService, BrokerService, LoginService,
     provide(TranslateLoader, {
       useFactory: (http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
       deps: [Http]

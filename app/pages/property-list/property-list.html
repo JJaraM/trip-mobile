@@ -2,6 +2,7 @@
   <ion-title>
     What's your next place?
   </ion-title>
+
   <ion-buttons start>
     <button (click)="dismiss()">
       <span primary showWhen="ios">Cancel</span>
@@ -11,11 +12,18 @@
 </ion-toolbar>
 
 <ion-content>
+  <ion-searchbar
+    [(ngModel)]="placeSearch"
+    [hideCancelButton]="shouldHideCancel"
+    (input)="onSearch($event)"
+    (cancel)="onCancel($event)">
+  </ion-searchbar>
   <ion-item-group>
     <div *ngFor="#c of countries">
       <ion-item-divider light>{{ c.country.letter }}</ion-item-divider>
       <ion-item *ngFor="#item of c.country.items" (click)="selectPlace(item)">
-        {{ item.name }}
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.from }}</p>
       </ion-item>
     </div>
   </ion-item-group>

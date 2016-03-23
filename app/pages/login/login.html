@@ -11,8 +11,8 @@
       <p>{{ 'application.description' | translate }}</p>
     </div>
     <div [hidden]="active" class="input-group">
-      <button (click)="signIn()">{{ 'login.signIn' | translate }}</button>
-      <button (click)="signUp()">{{ 'login.signUp' | translate }}</button>
+      <button (click)="showSignIn()">{{ 'login.signIn' | translate }}</button>
+      <button (click)="showSignUp()">{{ 'login.signUp' | translate }}</button>
     </div>
 
     <div class="hide input-group" id="signIn">
@@ -23,7 +23,19 @@
       <div class="input-group buttons">
         <button (click)="signIn()">{{ 'login.signIn' | translate }}</button>
       </div>
-      <button (click)="signUp()" class="no-account small">{{ 'login.noAccount' | translate}}</button>
+      <div class="terms small" (click)="showSignUp()">{{ 'login.noAccount' | translate}}</div>
+    </div>
+
+    <div class="hide input-group" id="signUp">
+      <div class="text-group">
+        <input type="name" placeholder="{{ 'global.name' | translate}}" [(ngModel)]="name"/>
+        <input type="email" placeholder="{{ 'global.emailAddress' | translate}}" [(ngModel)]="email"/>
+        <input type="password" placeholder="{{ 'global.password' | translate}}" [(ngModel)]="password"/>
+      </div>
+      <div class="input-group buttons">
+        <button (click)="signUp()">{{ 'login.signUp' | translate }}</button>
+      </div>
+      <div class="show-signUp small" (click)="showSignIn()">{{ 'login.yesAccount' | translate}}</div>
     </div>
 
     <div [hidden]="active" class="terms small">{{ 'login.terms' | translate}}</div>

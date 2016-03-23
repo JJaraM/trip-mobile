@@ -1,6 +1,10 @@
 module.exports = {
-  proxies: null,
-
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:8083/trip/api"
+    }
+  ],
   paths: {
     html : {
       src: ['app/**/*.html'],

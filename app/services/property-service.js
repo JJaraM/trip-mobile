@@ -56,8 +56,36 @@ export class PropertyService {
     }
 
     handleError(error) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        console.log('There is an error');
+        return Observable.throw(error || 'Server error');
     }
+
+    autocomplete(query) {
+      return this.http.get('https://gd.geobytes.com/AutoCompleteCity?q='+query)
+            .map(data => this.process(data, query));
+    }
+
+    findAll() {
+      return this.http.get('https://restcountries.eu/rest/v1/all')
+            .map(data => data.json());
+    }
+
+    process(data, query) {
+      var dataItems = [];
+      data.json().forEach(function(place){
+        let item = {'name': place.split(',')[0], 'from' :place.split(',')[2]};
+        dataItems.push(item);
+      });
+      var place = {
+        "country": {
+          letter: query.substring(0, 1).toUpperCase(),
+          items : dataItems
+        }
+      };
+      return place;
+    }
+
+
+
 
 }

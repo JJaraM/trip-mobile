@@ -15,6 +15,46 @@ export class PropertyListPage {
   constructor(nav, navParams, propertyService) {
     this.nav = nav;
     this.propertyService = propertyService;
+    this.placeSearch = '';
+    this.hidePlaceSearch = true;
+    this.broker;
+    this.initCountries();
+  }
+
+  selectPlace(country) {
+    let modal = Modal.create(PropertyDetailsPage, country);
+    this.nav.present(modal);
+  }
+
+  onSearch(searchbar) {
+    this.hidePlaceSearch = false;
+    var q = searchbar.value;
+    if (q.trim() == '') {
+      return;
+    }
+    if (q.trim().length > 2) {
+      this.propertyService.autocomplete(q).subscribe(
+        data => this.format(data),
+        () => console.log('Secret Quote Complete')
+      );
+    }
+  }
+
+  onCancel() {
+    this.hidePlaceSearch = true;
+    this.initCountries();
+  }
+
+  format(data) {
+    this.countries = [];
+    this.countries.push(data);
+  }
+
+  logError(err) {
+    console.log(err);
+  }
+
+  initCountries() {
     this.countries = [
       {
         "country": {
@@ -435,10 +475,5 @@ export class PropertyListPage {
         }
       }
     ];
-  }
-
-  selectPlace(country) {
-    let modal = Modal.create(PropertyDetailsPage, country);
-    this.nav.present(modal);
   }
 }

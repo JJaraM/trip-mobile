@@ -1,72 +1,79 @@
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
 body, p {
   font-family: 'Ubuntu', sans-serif;
   color: #FFF;
 }
 
-.logo {
-
-  .letter {
-    border: solid 4px;
-    height: 20%;
-    width: 20%;
-    margin-left: 40%;
-    margin-right: 40%;
-  }
-
-  h1 {
-    font-family: 'Fugaz One';
-  }
-
-}
-
-.slogan {
-  padding-top: 10%;
-}
-
 .login-bg {
+
   background-image: url("../img/bg/bg3.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100%;
 
+  .logo {
+
+    .letter {
+      border: solid 4px;
+      height: 20%;
+      width: 20%;
+      margin-left: 40%;
+      margin-right: 40%;
+    }
+
+    h1 {
+      font-family: 'Fugaz One';
+    }
+
+  }
+
+  .slogan {
+    padding-top: 10%;
+  }
+
   scroll-content {
     background-color: rgba(0,0,0,0.55);
   }
-  
+
+  .button, .button:hover, .button.activated {
+    background: transparent;
+    border: solid 1px;
+    font-size: 1.5em;
+  }
+
+  input {
+    background-color: rgba(0,0,0,0.5);
+    color: #FFF;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6% 0% 6% 10%;
+    margin-top: 5px;
+    padding-left: 6%;
+    padding-top: 6%;
+    height: 40px;
+    border: 0px;
+  }
+
+  .ios .button {
+    margin-right: 9%;
+    margin-left: 9%;
+  }
+
+  .md .button {
+    margin-right: 7%;
+    margin-left: 7%;
+  }
+
 }
+
+
 
 h1{
   font-size: 3.5em;
 }
 
-input {
-  background-color: rgba(0,0,0,0.5);
-  color: #FFF;
-  width: 100%;
-  border-radius: 4px;
-  padding: 6% 0% 6% 10%;
-  margin-top: 5px;
-  padding-left: 6%;
-  padding-top: 6%;
-  height: 40px;
-  border: 0px;
-}
 
-.button, .button:hover, .button.activated {
-  background: transparent;
-  border: solid 1px;
-  font-size: 1.5em;
-}
-
-.ios .button {
-  margin-right: 9%;
-  margin-left: 9%;
-}
-
-.md .button {
-  margin-right: 7%;
-  margin-left: 7%;
-}
 
 .login {
 
@@ -87,6 +94,7 @@ input {
       width: 100%;
       margin-right: 0;
       margin-left: 0;
+      font-size: 1.10em !important;
     }
 
     .text-group {
@@ -104,7 +112,11 @@ input {
 }
 
 .ios .terms {
-  padding-top: 30%;
+  padding-top: 20%;
+}
+
+.ios .show-signUp {
+  padding-top: 10%;
 }
 
 .md .terms {
@@ -262,9 +274,9 @@ input {
 }
 
 .hex h4 {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Indie Flower', cursive;
   margin:0;
-  font-size: 4em;
+  font-size: 2em;
 }
 
 .hex hr {
