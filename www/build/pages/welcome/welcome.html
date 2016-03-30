@@ -1,21 +1,71 @@
-<ion-navbar *navbar>
-    <button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Welcome</ion-title>
+<!--<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Welcome {{ name }}</ion-title>
 </ion-navbar>
+-->
 
-<ion-content class="welcome">
-    <ion-slides pager loop="false" autoplay="false" index="1">
-        <ion-slide padding>
-            <div class="destination">Add new destination</div>
-            <a href="#" class="translucent ui-draggable ui-draggable-handle plus add">
-              <div class="circle-add" (click)="createTrip()">+</div>
-            </a>
-        </ion-slide>
-        <!--<ion-slide padding>
-            <img src="images/brokers.svg"/>
-            <p>Ionic Realty has the best brokers in the business. Open the menu and select <strong>Brokers</strong> to connect with our brokers in a whole new way!</p>
-        </ion-slide>-->
-    </ion-slides>
+<ion-content class="has-header tutorial-page welcome">
+  <ion-slides pager [index]="0">
+
+    <ion-slide *ngFor="#trip of trips">
+
+
+
+
+
+      <ion-toolbar>
+        <div class='quick-place-container'>
+          <img class="quick-place-img" src="https://www.ciee.org/study-abroad/images/programs/0516/headers/desktop/london-england-open-campus-main.jpg"/>
+          <div class="some">
+            <span>Gran reloj</span>
+          </div>
+        </div>
+
+        <div class='quick-place-container'>
+          <img class="quick-place-img" src="https://www.ciee.org/study-abroad/images/programs/0516/headers/desktop/london-england-open-campus-main.jpg"/>
+          <div class="some">
+            <span>Gran reloj</span>
+          </div>
+        </div>
+
+
+      </ion-toolbar>
+
+
+      <h2 class="destination slide-title" [innerHTML]="trip.placeLocation"></h2>
+
+
+
+      <ion-row>
+        <ion-col width-33>
+          <div (click)="createTrip()" class="translucent-item item-text">
+            <img src="img/icons/restaurant/01.png">
+            <div>Restaurants</div>
+          </div>
+        </ion-col>
+
+        <ion-col width-33>
+          <div (click)="createTrip()" class="translucent-item item-text">
+            <img src="img/icons/park/01.png">
+            <div>Parks</div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-slide>
+
+
+    <ion-slide>
+      <div class="destination">Add new destination</div>
+      <div>
+        <a href="#" class="translucent ui-draggable ui-draggable-handle plus add">
+          <div class="circle-add" (click)="createTrip()">+</div>
+        </a>
+      </div>
+    </ion-slide>
+
+
+  </ion-slides>
 </ion-content>

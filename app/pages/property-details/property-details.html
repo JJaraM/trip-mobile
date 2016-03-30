@@ -29,12 +29,12 @@
   <ion-row [hidden]="!dateChange">
     <ion-col width-50>End date</ion-col>
     <ion-col width-50 class="right">
-      <button (click)="startDate()">{{ startDate | date:'yMMMMd' }}</button>
+      <button (click)="endDate()">{{ startDate | date:'yMMMMd' }}</button>
     </ion-col>
   </ion-row>
 
   <a href="#" class="btn-translucent">
-    <div>Create trip</div>
+    <div (click)="createTrip()">Create trip</div>
   </a>
 
 </ion-content>

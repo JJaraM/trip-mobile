@@ -1,24 +1,29 @@
 import {App, IonicApp, Platform} from 'ionic-framework/ionic';
 import {WelcomePage} from './pages/welcome/welcome';
 import {PropertyListPage} from './pages/property-list/property-list';
+import {PropertyDetailsPage} from './pages/property-details/property-details';
 import {BrokerListPage} from './pages/broker-list/broker-list';
 import {FavoriteListPage} from './pages/favorite-list/favorite-list';
 import {PropertyService} from './services/property-service';
 import {LoginService} from './services/loginService';
+import {TripService} from './services/tripService';
 import {BrokerService} from './services/broker-service';
 import {LoginPage} from './pages/login/login';
 import {provide} from 'angular2/core';
 import {TranslateService, TranslateLoader, TranslateStaticLoader, TranslatePipe} from 'ng2-translate/ng2-translate';
 import {Http} from 'angular2/http';
-import { RouteConfig, RouterLink, RouterOutlet } from 'angular2/router';
+import {RouteConfig, RouterLink, RouterOutlet } from 'angular2/router';
 import {DatePicker} from 'ionic-native';
+
+/*Factories*/
+import {UserFactory} from './services/userFactory';
 
 @App({
   templateUrl: 'build/app.html',
   config: {},
   providers:
   [
-    PropertyService, BrokerService, LoginService,
+    PropertyService, BrokerService, LoginService, TripService, UserFactory,
     provide(TranslateLoader, {
       useFactory: (http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
       deps: [Http]
@@ -28,7 +33,8 @@ import {DatePicker} from 'ionic-native';
 })
 @RouteConfig([
     {path: '/', component: WelcomePage, as: 'WelcomePage'},
-    {path: '/trip', component: PropertyListPage, as: 'PropertyListPage'}
+    {path: '/trip', component: PropertyListPage, as: 'PropertyListPage'},
+    {path: '/trip/create', component: PropertyDetailsPage, as: 'PropertyDetailsPage'}
 ])
 class MyApp {
 
@@ -51,6 +57,7 @@ class MyApp {
       {title: 'Login', component: LoginPage, icon: "home"},
       {title: 'Welcome', component: WelcomePage, icon: "bookmark"},
       {title: 'Properties', component: PropertyListPage, icon: "home"},
+      {title: 'Create-Trip', component: PropertyDetailsPage, icon: "home"},      
       {title: 'Brokers', component: BrokerListPage, icon: "people"},
       {title: 'Favorites', component: FavoriteListPage, icon: "star"}
     ];

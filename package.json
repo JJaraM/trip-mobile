@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "angular2": "2.0.0-beta.6",
+    "angular2-materialize": "^2.0.1",
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
     "cors": "^2.7.1",
@@ -10,6 +11,7 @@
     "ionic-framework": "2.0.0-beta.1",
     "ionicons": "3.0.0-alpha.3",
     "jquery": "^2.2.2",
+    "materialize-css": "^0.97.5",
     "ng2-translate": "^1.10.1",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",

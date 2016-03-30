@@ -15,18 +15,18 @@ export class LoginService {
 
   signIn(email, password) {
     return this.http.get('http://localhost:8083/trip/api/user/signIn?email='+email+"&password="+password)
-    .map(data => data)
+    .map(data => data.json())
     .catch(this.handleError);
   }
 
   signUp(email, name, password) {
     return this.http.get('http://localhost:8083/trip/api/user/signUp?email='+email+"&name="+name+"&password="+password)
-    .map(data => data)
+    .map(data => data.json())
     .catch(this.handleError);
   }
 
   handleError(error) {
-    return Observable.throw(error.status);
+    return Observable.throw(error);
   }
 
 }

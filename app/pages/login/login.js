@@ -3,7 +3,7 @@ import {TranslatePipe} from 'ng2-translate/ng2-translate'
 import {WelcomePage} from '../../pages/welcome/welcome';
 import $ from 'jquery/dist/jquery';
 import {LoginService} from '../../services/loginService';
-
+import {UserFactory} from '../../services/userFactory';
 @Page({
     templateUrl: 'build/pages/login/login.html',
     pipes: [TranslatePipe]
@@ -11,10 +11,11 @@ import {LoginService} from '../../services/loginService';
 export class LoginPage {
 
     static get parameters() {
-        return [[NavController], [NavParams],[LoginService]];
+        return [[NavController], [NavParams], [LoginService], [UserFactory]];
     }
 
-    constructor(nav, navParams, loginService) {
+    constructor(nav, navParams, loginService, userFactory) {
+        this.userFactory = userFactory;
         this.nav = nav;
         this.loginService = loginService;
         this.initializeAttributes();
@@ -27,15 +28,7 @@ export class LoginPage {
       this.active = false;
     }
 
-    showSignUp() {
-      this.showHideComponent('#signUp', '#signIn');
-    }
-
-    showSignIn() {
-      this.showHideComponent('#signIn', '#signUp');
-    }
-
-    showHideComponent(showId, hideId) {
+    showPanel(showId, hideId) {
       this.initializeAttributes();
       $(showId).removeClass('hide');
       $(showId).addClass('show animated fadeIn');
@@ -51,7 +44,7 @@ export class LoginPage {
         this.showAlert('Required password', 'Enter an password');
       } else {
         this.loginService.signIn(this.email, this.password).subscribe(
-          message => this.sucess(message),
+          data => this.storeSession(data),
           error => this.error(error)
         );
       }
@@ -66,22 +59,23 @@ export class LoginPage {
         this.showAlert('Required password', 'Enter a password');
       } else {
         this.loginService.signUp(this.email, this.name, this.password).subscribe(
-          message => this.sucess(message),
+          data => this.storeSession(data),
           error => this.error(error)
         );
       }
     }
 
     error(error) {
-      if (error == 404) {
+      if (error.status == 404) {
         this.showAlert('Invalid account', 'The user does not exit');
+      } else if (error.status == 200 ) {
+        this.showAlert('Error connection', 'Ops! There is a problem with the server');
       }
     }
 
-    sucess(data) {
-      if (data.status == 201 || data.status == 200) {
-          this.nav.push(WelcomePage);
-      }
+    storeSession(data) {
+      this.userFactory.storeInSession(data.id, data.email, data.name);
+      this.nav.push(WelcomePage);
     }
 
     showAlert(pTitle, pSubTitle) {

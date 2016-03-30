@@ -11,8 +11,8 @@
       <p>{{ 'application.description' | translate }}</p>
     </div>
     <div [hidden]="active" class="input-group">
-      <button (click)="showSignIn()">{{ 'login.signIn' | translate }}</button>
-      <button (click)="showSignUp()">{{ 'login.signUp' | translate }}</button>
+      <button (click)="showPanel('#signIn', '#signUp')">{{ 'login.signIn' | translate }}</button>
+      <button (click)="showPanel('#signUp', '#signIn')">{{ 'login.signUp' | translate }}</button>
     </div>
 
     <div class="hide input-group" id="signIn">
@@ -23,7 +23,7 @@
       <div class="input-group buttons">
         <button (click)="signIn()">{{ 'login.signIn' | translate }}</button>
       </div>
-      <div class="terms small" (click)="showSignUp()">{{ 'login.noAccount' | translate}}</div>
+      <div class="terms small" (click)="showPanel('#signUp', '#signIn')">{{ 'login.noAccount' | translate}}</div>
     </div>
 
     <div class="hide input-group" id="signUp">
@@ -35,7 +35,7 @@
       <div class="input-group buttons">
         <button (click)="signUp()">{{ 'login.signUp' | translate }}</button>
       </div>
-      <div class="show-signUp small" (click)="showSignIn()">{{ 'login.yesAccount' | translate}}</div>
+      <div class="show-signUp small" (click)="showPanel('#signIn', '#signUp')">{{ 'login.yesAccount' | translate}}</div>
     </div>
 
     <div [hidden]="active" class="terms small">{{ 'login.terms' | translate}}</div>

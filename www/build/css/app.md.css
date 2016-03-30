@@ -9185,10 +9185,25 @@ body {
   background-size: cover;
   font: 14px/1.4 Helvetica, Arial, sans-serif;
   overflow: hidden; }
-  .welcome img {
-    margin-bottom: 28px; }
   .welcome p {
     padding: 0 20px; }
+  .welcome .add {
+    margin-left: 33%; }
+  .welcome .translucent-item {
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10% 5% 10% 5%; }
+  .welcome .item-text {
+    font-size: 0.80em !important;
+    border-radius: 25%; }
+  .welcome .quick-place-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; }
+  .welcome .quick-place-container {
+    float: left;
+    padding: 1% 1% 1% 1%;
+    font-size: 0.80em !important; }
 
 .welcome:before {
   visibility: visible;
@@ -9208,7 +9223,7 @@ body {
 
 .translucent {
   width: 400px;
-  position: fixed;
+  /*position: fixed;*/
   display: block;
   line-height: 120px;
   top: 50%;
@@ -9217,7 +9232,7 @@ body {
   border-radius: 60px;
   overflow: hidden;
   color: #FFF;
-  margin: -60px -200px;
+  /*margin: -60px -200px;*/
   text-decoration: none;
   font-size: 40px;
   visibility: hidden; }
@@ -9318,6 +9333,32 @@ body {
 .create-trip .ios .button {
   margin-right: 0;
   margin-left: 0; }
+
+.tutorial-page .toolbar-background {
+  background: #f1f1f1;
+  border-color: transparent; }
+
+.tutorial-page .slide-zoom {
+  height: 100%; }
+
+.tutorial-page .slide-title {
+  margin-top: 2.8rem; }
+
+.tutorial-page .slide-image {
+  max-height: 50%;
+  max-width: 60%;
+  margin: 18px 0; }
+
+.tutorial-page b {
+  font-weight: 500; }
+
+.tutorial-page p {
+  padding: 0 40px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #60646B; }
+  .tutorial-page p b {
+    color: #000000; }
 
 .property ion-note {
   color: #387ef5;
@@ -9560,3 +9601,22 @@ h1 {
 
 .hex.hex-3 {
   background: #80b971; }
+
+.create-trip .button, .create-trip .button:hover, .create-trip .button.activated {
+  background: transparent;
+  border: solid 1px;
+  font-size: 1.5em; }
+
+.create-trip .md .button {
+  margin-right: 7%;
+  margin-left: 7%; }
+
+.create-trip .button, .create-trip .button:hover {
+  color: #000;
+  border: 0;
+  font-size: inherit;
+  padding: 0; }
+
+.create-trip .ios .button {
+  margin-right: 0;
+  margin-left: 0; }
