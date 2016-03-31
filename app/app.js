@@ -15,6 +15,8 @@ import {Http} from 'angular2/http';
 import {RouteConfig, RouterLink, RouterOutlet } from 'angular2/router';
 import {DatePicker} from 'ionic-native';
 
+import {AlertService} from './services/alert-service';
+
 /*Factories*/
 import {UserFactory} from './services/userFactory';
 
@@ -23,7 +25,7 @@ import {UserFactory} from './services/userFactory';
   config: {},
   providers:
   [
-    PropertyService, BrokerService, LoginService, TripService, UserFactory,
+    PropertyService, BrokerService, LoginService, TripService, AlertService, UserFactory, 
     provide(TranslateLoader, {
       useFactory: (http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
       deps: [Http]
@@ -32,9 +34,9 @@ import {UserFactory} from './services/userFactory';
   ]
 })
 @RouteConfig([
-    {path: '/', component: WelcomePage, as: 'WelcomePage'},
-    {path: '/trip', component: PropertyListPage, as: 'PropertyListPage'},
-    {path: '/trip/create', component: PropertyDetailsPage, as: 'PropertyDetailsPage'}
+  {path: '/', component: WelcomePage, as: 'WelcomePage'},
+  {path: '/trip', component: PropertyListPage, as: 'PropertyListPage'},
+  {path: '/trip/create', component: PropertyDetailsPage, as: 'PropertyDetailsPage'}
 ])
 class MyApp {
 
@@ -57,7 +59,7 @@ class MyApp {
       {title: 'Login', component: LoginPage, icon: "home"},
       {title: 'Welcome', component: WelcomePage, icon: "bookmark"},
       {title: 'Properties', component: PropertyListPage, icon: "home"},
-      {title: 'Create-Trip', component: PropertyDetailsPage, icon: "home"},      
+      {title: 'Create-Trip', component: PropertyDetailsPage, icon: "home"},
       {title: 'Brokers', component: BrokerListPage, icon: "people"},
       {title: 'Favorites', component: FavoriteListPage, icon: "star"}
     ];

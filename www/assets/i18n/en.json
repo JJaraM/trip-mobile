@@ -15,5 +15,21 @@
     "emailAddress" : "Email address",
     "password" : "Password",
     "name": "Name"
+  },
+  "messages" : {
+    "login": {
+      "email.title":"Required email address",
+      "email.subTitle": "Enter a name",
+      "password.title":"Required password",
+      "password.subTitle": "Enter an password",
+      "name.title": "Required name",
+      "name.subTitle": "Enter a name",
+      "error.invalid.account.title" : "Invalid account",
+      "error.invalid.account.subTitle" : "The user does not exit"
+    },
+    "global" : {
+      "server.down.title" : "Error connection",
+      "server.down.subTitle" : "Ops! There is a problem with the server"
+    }
   }
 }

@@ -3216,6 +3216,8 @@
 
 	var _ionicNative = __webpack_require__(593);
 
+	var _alertService = __webpack_require__(642);
+
 	var _userFactory = __webpack_require__(632);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3223,7 +3225,7 @@
 	var MyApp = (_dec = (0, _ionic.App)({
 	  templateUrl: 'build/app.html',
 	  config: {},
-	  providers: [_propertyService.PropertyService, _brokerService.BrokerService, _loginService.LoginService, _tripService.TripService, _userFactory.UserFactory, (0, _core.provide)(_ng2Translate.TranslateLoader, {
+	  providers: [_propertyService.PropertyService, _brokerService.BrokerService, _loginService.LoginService, _tripService.TripService, _alertService.AlertService, _userFactory.UserFactory, (0, _core.provide)(_ng2Translate.TranslateLoader, {
 	    useFactory: function useFactory(http) {
 	      return new _ng2Translate.TranslateStaticLoader(http, 'assets/i18n', '.json');
 	    },
@@ -76071,13 +76073,15 @@
 
 	var _welcome = __webpack_require__(358);
 
-	var _jquery = __webpack_require__(641);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
 	var _loginService = __webpack_require__(635);
 
 	var _userFactory = __webpack_require__(632);
+
+	var _alertService = __webpack_require__(642);
+
+	var _jquery = __webpack_require__(641);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -76090,16 +76094,18 @@
 	  _createClass(LoginPage, null, [{
 	    key: 'parameters',
 	    get: function get() {
-	      return [[_ionic.NavController], [_ionic.NavParams], [_loginService.LoginService], [_userFactory.UserFactory]];
+	      return [[_ionic.NavController], [_loginService.LoginService], [_userFactory.UserFactory], [_ng2Translate.TranslateService], [_alertService.AlertService]];
 	    }
 	  }]);
 
-	  function LoginPage(nav, navParams, loginService, userFactory) {
+	  function LoginPage(nav, loginService, userFactory, translate, alertService) {
 	    _classCallCheck(this, LoginPage);
 
 	    this.userFactory = userFactory;
 	    this.nav = nav;
 	    this.loginService = loginService;
+	    this.translate = translate;
+	    this.alertService = alertService;
 	    this.initializeAttributes();
 	  }
 
@@ -76127,9 +76133,9 @@
 	      var _this = this;
 
 	      if (this.isEmpty(this.email)) {
-	        this.showAlert('Required email address', 'Enter an email address');
+	        this.alertService.ok('messages.login.email.title', 'messages.login.email.subTitle', this.nav);
 	      } else if (this.isEmpty(this.password)) {
-	        this.showAlert('Required password', 'Enter an password');
+	        this.alertService.ok('messages.login.password.title', 'messages.login.password.subTitle', this.nav);
 	      } else {
 	        this.loginService.signIn(this.email, this.password).subscribe(function (data) {
 	          return _this.storeSession(data);
@@ -76144,11 +76150,11 @@
 	      var _this2 = this;
 
 	      if (this.isEmpty(this.name)) {
-	        this.showAlert('Required name', 'Enter a name');
+	        this.alertService.ok('messages.login.name.title', 'messages.login.name.subTitle', this.nav);
 	      } else if (this.isEmpty(this.password)) {
-	        this.showAlert('Required email address', 'Enter an email address');
+	        this.alertService.ok('messages.login.email.title', 'messages.login.email.subTitle', this.nav);
 	      } else if (this.isEmpty(this.password)) {
-	        this.showAlert('Required password', 'Enter a password');
+	        this.alertService.ok('messages.login.password.title', 'messages.login.password.subTitle', this.nav);
 	      } else {
 	        this.loginService.signUp(this.email, this.name, this.password).subscribe(function (data) {
 	          return _this2.storeSession(data);
@@ -76161,9 +76167,9 @@
 	    key: 'error',
 	    value: function error(_error) {
 	      if (_error.status == 404) {
-	        this.showAlert('Invalid account', 'The user does not exit');
+	        this.alertService.ok('error.invalid.account.title', 'error.invalid.account.subTitle', this.nav);
 	      } else if (_error.status == 200) {
-	        this.showAlert('Error connection', 'Ops! There is a problem with the server');
+	        this.alertService.serverDown(this.nav);
 	      }
 	    }
 	  }, {
@@ -76171,16 +76177,6 @@
 	    value: function storeSession(data) {
 	      this.userFactory.storeInSession(data.id, data.email, data.name);
 	      this.nav.push(_welcome.WelcomePage);
-	    }
-	  }, {
-	    key: 'showAlert',
-	    value: function showAlert(pTitle, pSubTitle) {
-	      var alert = _ionic.Alert.create({
-	        title: pTitle,
-	        subTitle: pSubTitle,
-	        buttons: ['Ok']
-	      });
-	      this.nav.present(alert);
 	    }
 	  }, {
 	    key: 'isEmpty',
@@ -86577,6 +86573,96 @@
 	return jQuery;
 	}));
 
+
+/***/ },
+/* 642 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.AlertService = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
+
+	var _core = __webpack_require__(7);
+
+	var _ng2Translate = __webpack_require__(637);
+
+	var _ionic = __webpack_require__(5);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	* Service to manage the alert messages
+	*/
+	var AlertService = exports.AlertService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
+	  _createClass(AlertService, null, [{
+	    key: 'parameters',
+
+
+	    /**
+	    * Paramaters to be injected
+	    */
+	    get: function get() {
+	      return [[_ng2Translate.TranslateService]];
+	    }
+
+	    /**
+	    * @param translateService specifies the service to be used to get the key values
+	    */
+
+	  }]);
+
+	  function AlertService(translateService) {
+	    _classCallCheck(this, AlertService);
+
+	    this.translateService = translateService;
+	  }
+
+	  /**
+	  * Display a message alert
+	  * @param keyTitle a key to be search in i18n file. Specifies the title attribute to be displayed in the alert message
+	  * @param keySubtitle a key to search in i18n file. Specifies the subTitle attribute to be displayed in the alert message
+	  * @param navController a object from Page file to be displayed
+	  **/
+
+
+	  _createClass(AlertService, [{
+	    key: 'ok',
+	    value: function ok(keyTitle, keySubtitle, navController) {
+	      var _this = this;
+
+	      this.translateService.get(keyTitle).subscribe(function (_title) {
+	        _this.translateService.get(keySubtitle).subscribe(function (_subtitle) {
+	          var alert = _ionic.Alert.create({
+	            title: _title,
+	            subTitle: _subtitle,
+	            buttons: ['Ok']
+	          });
+	          navController.present(alert);
+	        });
+	      });
+	    }
+
+	    /**
+	    * Display a predifine message to be displayed with there is an error on the server
+	    * @param navController a object from Page file to be displayed
+	    **/
+
+	  }, {
+	    key: 'serverDown',
+	    value: function serverDown(navController) {
+	      this.ok('messages.server.down.title', 'messages.server.down.subTitle', navController);
+	    }
+	  }]);
+
+	  return AlertService;
+	}()) || _class);
 
 /***/ }
 /******/ ]);
