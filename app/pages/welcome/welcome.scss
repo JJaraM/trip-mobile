@@ -18,6 +18,12 @@
     margin-left: 33%;
   }
 
+
+
+  scroll-content {
+    margin-right: -17px;
+  }
+
   .translucent-item {
     color: #FFF;
     background: rgba(0, 0, 0, 0.3);
@@ -26,23 +32,21 @@
 
   .item-text {
     font-size: 0.80em !important;
-    border-radius: 25%;
-  }
-
-  .quick-place-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-
-  .quick-place-container {
-    float: left;
-    padding: 1% 1% 1% 1%;
-    font-size: 0.80em !important;
+    /*border-radius: 25%;*/
   }
 
 }
 
+.welcome-page {
+  .toolbar-background {
+    background: #444;
+    border-color: #444;
+  }
+
+  .toolbar-title {
+    color: #FFF;
+  }
+}
 
 
 .welcome:before{
@@ -95,7 +99,8 @@
   filter: url("#blur");
 }
 .translucent div {
-  background: rgba(235,235,235,0.6);
+  /*background: rgba(235,235,235,0.6);*/
+  background: rgba(0, 0, 0, 0.3);
   text-align: center;
   position: relative;
   display: block;
@@ -127,16 +132,13 @@
 }
 
 .destination {
-  margin-top: -33%;
-  color:#FFF;
+  margin-top: 50%;
+  font-size: 1em;
+  color: #FFF;
 }
 
 .swiper-pagination-bullet {
   background: #FFF;
-}
-
-.searchbar-input {
-  /*width: 26em;*/
 }
 
 .create-trip {
@@ -216,7 +218,7 @@
   }
 
   .slide-title {
-    margin-top: 2.8rem;
+    margin-top: 0.8rem;
   }
 
   .slide-image {
@@ -239,5 +241,7 @@
       color: #000000;
     }
   }
+
+
 
 }

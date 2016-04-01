@@ -1,10 +1,10 @@
-<!--<ion-navbar *navbar>
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
+<ion-navbar *navbar hideBackButton>
+  <button menuToggle="leftMenu">
+   <ion-icon name='menu'></ion-icon>
+ </button>
   <ion-title>Welcome {{ name }}</ion-title>
 </ion-navbar>
--->
+
 
 <ion-content class="has-header tutorial-page welcome">
   <ion-slides pager [index]="0">
@@ -15,26 +15,10 @@
 
 
 
-      <ion-toolbar>
-        <div class='quick-place-container'>
-          <img class="quick-place-img" src="https://www.ciee.org/study-abroad/images/programs/0516/headers/desktop/london-england-open-campus-main.jpg"/>
-          <div class="some">
-            <span>Gran reloj</span>
-          </div>
-        </div>
-
-        <div class='quick-place-container'>
-          <img class="quick-place-img" src="https://www.ciee.org/study-abroad/images/programs/0516/headers/desktop/london-england-open-campus-main.jpg"/>
-          <div class="some">
-            <span>Gran reloj</span>
-          </div>
-        </div>
 
 
-      </ion-toolbar>
 
 
-      <h2 class="destination slide-title" [innerHTML]="trip.placeLocation"></h2>
 
 
 

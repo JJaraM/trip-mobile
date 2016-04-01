@@ -25,7 +25,7 @@ import {UserFactory} from './services/userFactory';
   config: {},
   providers:
   [
-    PropertyService, BrokerService, LoginService, TripService, AlertService, UserFactory, 
+    PropertyService, BrokerService, LoginService, TripService, AlertService, UserFactory,
     provide(TranslateLoader, {
       useFactory: (http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
       deps: [Http]
@@ -56,12 +56,11 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      {title: 'Login', component: LoginPage, icon: "home"},
-      {title: 'Welcome', component: WelcomePage, icon: "bookmark"},
-      {title: 'Properties', component: PropertyListPage, icon: "home"},
-      {title: 'Create-Trip', component: PropertyDetailsPage, icon: "home"},
-      {title: 'Brokers', component: BrokerListPage, icon: "people"},
-      {title: 'Favorites', component: FavoriteListPage, icon: "star"}
+      {title: 'Login', component: LoginPage, icon: "home", img:"https://i.ytimg.com/vi/lfUIGflbwx8/maxresdefault.jpg", name:"Tower", time:"(13:00 - 13:30)"},
+      {title: 'Welcome', component: WelcomePage, icon: "bookmark", img:"https://www.visitbritainshop.com/espana/~/media/91f5c92f5c6b4894911c474e23f5849a.ashx?as=0&h=349&w=620", name:"London Eye", time:"(14:00 - 14:30)"},
+      {title: 'Properties', component: PropertyListPage, icon: "home", img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Palace_of_Westminster,_London_-_Feb_2007.jpg/980px-Palace_of_Westminster,_London_-_Feb_2007.jpg", name:"Palacio de Westminster", time:"(14:30 - 16:00)"},
+      {title: 'Create-Trip', component: PropertyDetailsPage, icon: "home", img:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Buckingham_Palace_from_gardens,_London,_UK_-_Diliff.jpg/300px-Buckingham_Palace_from_gardens,_London,_UK_-_Diliff.jpg", name:"Palacio de Buckingham", time:"(16:00 - 16:30)"},
+      {title: 'Brokers', component: BrokerListPage, icon: "people", img:"http://www.sightseeingtours.co.uk/images/products/gt-london-attracts/xl-p-474-Churchill-Cabinet-War-Rooms.jpg", name:"Churchill War Rooms", time:"(16:30 - 19:00)"}
     ];
 
     // make PropertyListPage the root (or first) page

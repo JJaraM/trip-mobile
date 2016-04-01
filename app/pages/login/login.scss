@@ -4,7 +4,6 @@ body, p {
   font-family: 'Ubuntu', sans-serif;
   color: #FFF;
 }
-
 .login-bg {
 
   background-image: url("../img/bg/bg3.jpg");
@@ -34,6 +33,7 @@ body, p {
 
   scroll-content {
     background-color: rgba(0,0,0,0.55);
+    margin-right: -15px;
   }
 
   .button, .button:hover, .button.activated {
@@ -157,8 +157,7 @@ h1{
 }
 
 .hex {
-  width: 35%;
-  height: 33%;
+  width: 33%;
   background-color: #ccc;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -332,5 +331,126 @@ h1{
     margin-right: 0;
     margin-left: 0;
   }
+
+}
+
+
+
+.places-menu {
+
+  ion-list {
+    margin: -1px 0 0px 0;
+  }
+
+  ion-list + ion-list {
+    margin-top: 10px;
+  }
+
+
+  ion-menu {
+    background: rgba(0, 0, 0, 0.3)
+  }
+
+  .quick-place-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+  }
+
+  .toolbar-title{
+    color: #FFF;
+  }
+
+  .item {
+
+    border: none !important;
+    background: rgba(0, 0, 0, 0.3);
+
+    h2 {
+      color: #FFF;
+      font-size: 1.4rem;
+    }
+
+    p {
+      color: #FFF;
+      font-size: 1.2rem;
+      font-style: oblique;
+    }
+  }
+
+  scroll-content {
+    background-image: url("../img/bg/bg4.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    background-position: 11% 0%;
+  }
+
+  .button-clear {
+    color: #9f9f9f;
+  }
+
+  .toolbar ion-searchbar .searchbar-input {
+    background-color: #212121;
+    color: #9f9f9f;
+  }
+
+  .item-inner {
+    border-bottom: 1px solid rgba( 200, 199, 204, 0.1);
+  }
+
+  .searchbar-input::-moz-placeholder {
+    color: #9f9f9f;
+  }
+  .searchbar-input:-ms-input-placeholder {
+    color: #9f9f9f;
+  }
+  .searchbar-input::-webkit-input-placeholder {
+    color: #9f9f9f;
+    text-indent: 0;
+  }
+  .toolbar-background {
+    border: none;
+    background: #444;
+  }
+
+  scroll-content {
+    margin-right: -6%;
+    background-color: #444444;
+  }
+
+  ion-list-header{
+    background: #212121;
+    border-bottom: none;
+    color: #9f9f9f;
+    padding: 10px 16px 10px 16px;
+  }
+
+  .button-icon {
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+  }
+
+  .button-available {
+    background-color: #5bdd5e;
+  }
+
+  .button-past {
+    background-color: #ff6a7f;
+  }
+
+  .time{
+    float: right;
+    padding-right: 3px;
+  }
+
+
+
+
+
+
+
+
 
 }

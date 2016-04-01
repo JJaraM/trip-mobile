@@ -1,18 +1,41 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" class="places-menu" >
 
   <ion-toolbar>
-    <ion-title>Menu</ion-title>
+    <!--<ion-title>Places</ion-title>-->
+    <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
   </ion-toolbar>
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="#p of pages" (click)="openPage(p)">
-        <ion-icon item-left name="{{p.icon}}"></ion-icon>
-        {{p.title}}
-      </button>
+      <ion-list-header>
+        Today (6)
+      </ion-list-header>
+      <ion-item *ngFor="#p of pages">
+        <ion-avatar item-left>
+          <img class="quick-place-img" [src]="p.img"/>
+        </ion-avatar>
+        <h2 [innerHTML]="p.name"></h2>
+        <p [innerHTML]="p.time"></p>
+        <button icon available item-right></button>
+      </ion-item>
     </ion-list>
-  </ion-content>
 
+    <ion-list>
+      <ion-list-header>
+        Before (6)
+      </ion-list-header>
+      <ion-item *ngFor="#p of pages">
+        <ion-avatar item-left>
+          <img class="quick-place-img" [src]="p.img"/>
+        </ion-avatar>
+        <h2 [innerHTML]="p.name"></h2>
+        <p [innerHTML]="p.time"></p>
+        <button icon past item-right></button>
+      </ion-item>
+    </ion-list>
+
+
+  </ion-content>
 </ion-menu>
 
 <ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

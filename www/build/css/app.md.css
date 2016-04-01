@@ -9189,21 +9189,22 @@ body {
     padding: 0 20px; }
   .welcome .add {
     margin-left: 33%; }
+  .welcome scroll-content {
+    margin-right: -17px; }
   .welcome .translucent-item {
     color: #FFF;
     background: rgba(0, 0, 0, 0.3);
     padding: 10% 5% 10% 5%; }
   .welcome .item-text {
     font-size: 0.80em !important;
-    border-radius: 25%; }
-  .welcome .quick-place-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; }
-  .welcome .quick-place-container {
-    float: left;
-    padding: 1% 1% 1% 1%;
-    font-size: 0.80em !important; }
+    /*border-radius: 25%;*/ }
+
+.welcome-page .toolbar-background {
+  background: #444;
+  border-color: #444; }
+
+.welcome-page .toolbar-title {
+  color: #FFF; }
 
 .welcome:before {
   visibility: visible;
@@ -9251,7 +9252,8 @@ body {
   filter: url("#blur"); }
 
 .translucent div {
-  background: rgba(235, 235, 235, 0.6);
+  /*background: rgba(235,235,235,0.6);*/
+  background: rgba(0, 0, 0, 0.3);
   text-align: center;
   position: relative;
   display: block;
@@ -9276,14 +9278,12 @@ body {
   line-height: 1.40; }
 
 .destination {
-  margin-top: -33%;
+  margin-top: 50%;
+  font-size: 1em;
   color: #FFF; }
 
 .swiper-pagination-bullet {
   background: #FFF; }
-
-.searchbar-input {
-  /*width: 26em;*/ }
 
 .create-trip scroll-content {
   background: #f4f4f4; }
@@ -9342,7 +9342,7 @@ body {
   height: 100%; }
 
 .tutorial-page .slide-title {
-  margin-top: 2.8rem; }
+  margin-top: 0.8rem; }
 
 .tutorial-page .slide-image {
   max-height: 50%;
@@ -9407,7 +9407,8 @@ body, p {
   .login-bg .slogan {
     padding-top: 10%; }
   .login-bg scroll-content {
-    background-color: rgba(0, 0, 0, 0.55); }
+    background-color: rgba(0, 0, 0, 0.55);
+    margin-right: -15px; }
   .login-bg .button, .login-bg .button:hover, .login-bg .button.activated {
     background: transparent;
     border: solid 1px;
@@ -9492,8 +9493,7 @@ h1 {
   margin-left: -350px; }
 
 .hex {
-  width: 35%;
-  height: 33%;
+  width: 33%;
   background-color: #ccc;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -9620,3 +9620,87 @@ h1 {
 .create-trip .ios .button {
   margin-right: 0;
   margin-left: 0; }
+
+.places-menu ion-list {
+  margin: -1px 0 0px 0; }
+
+.places-menu ion-list + ion-list {
+  margin-top: 10px; }
+
+.places-menu ion-menu {
+  background: rgba(0, 0, 0, 0.3); }
+
+.places-menu .quick-place-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%; }
+
+.places-menu .toolbar-title {
+  color: #FFF; }
+
+.places-menu .item {
+  border: none !important;
+  background: rgba(0, 0, 0, 0.3); }
+  .places-menu .item h2 {
+    color: #FFF;
+    font-size: 1.4rem; }
+  .places-menu .item p {
+    color: #FFF;
+    font-size: 1.2rem;
+    font-style: oblique; }
+
+.places-menu scroll-content {
+  background-image: url("../img/bg/bg4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  background-position: 11% 0%; }
+
+.places-menu .button-clear {
+  color: #9f9f9f; }
+
+.places-menu .toolbar ion-searchbar .searchbar-input {
+  background-color: #212121;
+  color: #9f9f9f; }
+
+.places-menu .item-inner {
+  border-bottom: 1px solid rgba(200, 199, 204, 0.1); }
+
+.places-menu .searchbar-input::-moz-placeholder {
+  color: #9f9f9f; }
+
+.places-menu .searchbar-input:-ms-input-placeholder {
+  color: #9f9f9f; }
+
+.places-menu .searchbar-input::-webkit-input-placeholder {
+  color: #9f9f9f;
+  text-indent: 0; }
+
+.places-menu .toolbar-background {
+  border: none;
+  background: #444; }
+
+.places-menu scroll-content {
+  margin-right: -6%;
+  background-color: #444444; }
+
+.places-menu ion-list-header {
+  background: #212121;
+  border-bottom: none;
+  color: #9f9f9f;
+  padding: 10px 16px 10px 16px; }
+
+.places-menu .button-icon {
+  border-radius: 50%;
+  width: 14px;
+  height: 14px; }
+
+.places-menu .button-available {
+  background-color: #5bdd5e; }
+
+.places-menu .button-past {
+  background-color: #ff6a7f; }
+
+.places-menu .time {
+  float: right;
+  padding-right: 3px; }

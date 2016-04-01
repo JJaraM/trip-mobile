@@ -3216,7 +3216,7 @@
 
 	var _ionicNative = __webpack_require__(593);
 
-	var _alertService = __webpack_require__(642);
+	var _alertService = __webpack_require__(641);
 
 	var _userFactory = __webpack_require__(632);
 
@@ -3251,7 +3251,7 @@
 	    this.initializeApp();
 
 	    // set our app's pages
-	    this.pages = [{ title: 'Login', component: _login.LoginPage, icon: "home" }, { title: 'Welcome', component: _welcome.WelcomePage, icon: "bookmark" }, { title: 'Properties', component: _propertyList.PropertyListPage, icon: "home" }, { title: 'Create-Trip', component: _propertyDetails.PropertyDetailsPage, icon: "home" }, { title: 'Brokers', component: _brokerList.BrokerListPage, icon: "people" }, { title: 'Favorites', component: _favoriteList.FavoriteListPage, icon: "star" }];
+	    this.pages = [{ title: 'Login', component: _login.LoginPage, icon: "home", img: "https://i.ytimg.com/vi/lfUIGflbwx8/maxresdefault.jpg", name: "Tower", time: "(13:00 - 13:30)" }, { title: 'Welcome', component: _welcome.WelcomePage, icon: "bookmark", img: "https://www.visitbritainshop.com/espana/~/media/91f5c92f5c6b4894911c474e23f5849a.ashx?as=0&h=349&w=620", name: "London Eye", time: "(14:00 - 14:30)" }, { title: 'Properties', component: _propertyList.PropertyListPage, icon: "home", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Palace_of_Westminster,_London_-_Feb_2007.jpg/980px-Palace_of_Westminster,_London_-_Feb_2007.jpg", name: "Palacio de Westminster", time: "(14:30 - 16:00)" }, { title: 'Create-Trip', component: _propertyDetails.PropertyDetailsPage, icon: "home", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Buckingham_Palace_from_gardens,_London,_UK_-_Diliff.jpg/300px-Buckingham_Palace_from_gardens,_London,_UK_-_Diliff.jpg", name: "Palacio de Buckingham", time: "(16:00 - 16:30)" }, { title: 'Brokers', component: _brokerList.BrokerListPage, icon: "people", img: "http://www.sightseeingtours.co.uk/images/products/gt-london-attracts/xl-p-474-Churchill-Cabinet-War-Rooms.jpg", name: "Churchill War Rooms", time: "(16:30 - 19:00)" }];
 
 	    // make PropertyListPage the root (or first) page
 	    this.rootPage = _login.LoginPage;
@@ -76077,9 +76077,9 @@
 
 	var _userFactory = __webpack_require__(632);
 
-	var _alertService = __webpack_require__(642);
+	var _alertService = __webpack_require__(641);
 
-	var _jquery = __webpack_require__(641);
+	var _jquery = __webpack_require__(642);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -76728,6 +76728,96 @@
 
 /***/ },
 /* 641 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.AlertService = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
+
+	var _core = __webpack_require__(7);
+
+	var _ng2Translate = __webpack_require__(637);
+
+	var _ionic = __webpack_require__(5);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/**
+	* Service to manage the alert messages
+	*/
+	var AlertService = exports.AlertService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
+	  _createClass(AlertService, null, [{
+	    key: 'parameters',
+
+
+	    /**
+	    * Paramaters to be injected
+	    */
+	    get: function get() {
+	      return [[_ng2Translate.TranslateService]];
+	    }
+
+	    /**
+	    * @param translateService specifies the service to be used to get the key values
+	    */
+
+	  }]);
+
+	  function AlertService(translateService) {
+	    _classCallCheck(this, AlertService);
+
+	    this.translateService = translateService;
+	  }
+
+	  /**
+	  * Display a message alert
+	  * @param keyTitle a key to be search in i18n file. Specifies the title attribute to be displayed in the alert message
+	  * @param keySubtitle a key to search in i18n file. Specifies the subTitle attribute to be displayed in the alert message
+	  * @param navController a object from Page file to be displayed
+	  **/
+
+
+	  _createClass(AlertService, [{
+	    key: 'ok',
+	    value: function ok(keyTitle, keySubtitle, navController) {
+	      var _this = this;
+
+	      this.translateService.get(keyTitle).subscribe(function (_title) {
+	        _this.translateService.get(keySubtitle).subscribe(function (_subtitle) {
+	          var alert = _ionic.Alert.create({
+	            title: _title,
+	            subTitle: _subtitle,
+	            buttons: ['Ok']
+	          });
+	          navController.present(alert);
+	        });
+	      });
+	    }
+
+	    /**
+	    * Display a predifine message to be displayed with there is an error on the server
+	    * @param navController a object from Page file to be displayed
+	    **/
+
+	  }, {
+	    key: 'serverDown',
+	    value: function serverDown(navController) {
+	      this.ok('messages.server.down.title', 'messages.server.down.subTitle', navController);
+	    }
+	  }]);
+
+	  return AlertService;
+	}()) || _class);
+
+/***/ },
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -86573,96 +86663,6 @@
 	return jQuery;
 	}));
 
-
-/***/ },
-/* 642 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.AlertService = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _dec, _class;
-
-	var _core = __webpack_require__(7);
-
-	var _ng2Translate = __webpack_require__(637);
-
-	var _ionic = __webpack_require__(5);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	/**
-	* Service to manage the alert messages
-	*/
-	var AlertService = exports.AlertService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
-	  _createClass(AlertService, null, [{
-	    key: 'parameters',
-
-
-	    /**
-	    * Paramaters to be injected
-	    */
-	    get: function get() {
-	      return [[_ng2Translate.TranslateService]];
-	    }
-
-	    /**
-	    * @param translateService specifies the service to be used to get the key values
-	    */
-
-	  }]);
-
-	  function AlertService(translateService) {
-	    _classCallCheck(this, AlertService);
-
-	    this.translateService = translateService;
-	  }
-
-	  /**
-	  * Display a message alert
-	  * @param keyTitle a key to be search in i18n file. Specifies the title attribute to be displayed in the alert message
-	  * @param keySubtitle a key to search in i18n file. Specifies the subTitle attribute to be displayed in the alert message
-	  * @param navController a object from Page file to be displayed
-	  **/
-
-
-	  _createClass(AlertService, [{
-	    key: 'ok',
-	    value: function ok(keyTitle, keySubtitle, navController) {
-	      var _this = this;
-
-	      this.translateService.get(keyTitle).subscribe(function (_title) {
-	        _this.translateService.get(keySubtitle).subscribe(function (_subtitle) {
-	          var alert = _ionic.Alert.create({
-	            title: _title,
-	            subTitle: _subtitle,
-	            buttons: ['Ok']
-	          });
-	          navController.present(alert);
-	        });
-	      });
-	    }
-
-	    /**
-	    * Display a predifine message to be displayed with there is an error on the server
-	    * @param navController a object from Page file to be displayed
-	    **/
-
-	  }, {
-	    key: 'serverDown',
-	    value: function serverDown(navController) {
-	      this.ok('messages.server.down.title', 'messages.server.down.subTitle', navController);
-	    }
-	  }]);
-
-	  return AlertService;
-	}()) || _class);
 
 /***/ }
 /******/ ]);
