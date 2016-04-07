@@ -7,6 +7,7 @@ export class UserFactory {
 
   constructor() {
     this.db = new Storage(SqlStorage, {name: 'thadatabase'});
+    this.newPlace = true;
   }
 
   storeInSession(id, email, name) {
@@ -25,6 +26,14 @@ export class UserFactory {
     }, (err) => {
         console.log('Error: ', err);
     });
+  }
+
+  getNewPlace() {
+    return this.newPlace;
+  }
+
+  setNewPlace(newPlace) {
+    this.newPlace = newPlace;
   }
 
 }

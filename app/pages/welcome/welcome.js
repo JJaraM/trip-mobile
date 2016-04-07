@@ -1,6 +1,7 @@
-import {Page, NavController, NavParams, Modal} from 'ionic-framework/ionic';
+import {Page, NavController, NavParams, Modal, ViewController} from 'ionic-framework/ionic';
 import {ROUTER_DIRECTIVES, Router, Location, RouteConfig} from "angular2/router";
 import {PropertyListPage} from '../../pages/property-list/property-list';
+import {PlaceListPage} from '../../pages/placeList/placeList';
 import {UserFactory} from '../../services/userFactory';
 import {TripService} from '../../services/tripService';
 
@@ -26,6 +27,12 @@ export class WelcomePage {
 
     createTrip() {
       let modal = Modal.create(PropertyListPage);
+      this.nav.present(modal);
+    }
+
+    selectPlace(tripId, categoryId) {
+      let data = {_tripId : tripId, _categoryId : categoryId}
+      let modal = Modal.create(PlaceListPage, data);
       this.nav.present(modal);
     }
 

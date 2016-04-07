@@ -1,3 +1,10 @@
+.create-trip {
+  .button-inner {
+    margin-top: -30px;
+  }
+}
+
+
 .welcome {
 
   font-weight: light;
@@ -17,6 +24,7 @@
   .add {
     margin-left: 33%;
   }
+
 
 
 
@@ -218,7 +226,10 @@
   }
 
   .slide-title {
-    margin-top: 0.8rem;
+    color: #FFF;
+    font-size: 1.5em;
+    padding-bottom: 10%;
+    padding-top: 8%;
   }
 
   .slide-image {
@@ -244,4 +255,19 @@
 
 
 
+}
+
+.places-list {
+
+  .no-more-places-emoji {
+    font-size: 5em;
+    text-align: center;
+    padding-top: 50%;
+  }
+  .no-more-places {
+    color: #000;
+    font-size: 1.4em;
+    text-align: center;
+    padding-top: 5%;
+  }
 }

@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams, Alert, ActionSheet} from 'ionic-framework/ionic';
+import {Page, NavController, NavParams, Alert, ActionSheet, ViewController} from 'ionic-framework/ionic';
 import {BrokerDetailsPage} from '../broker-details/broker-details';
 import {PropertyService} from '../../services/property-service';
 import {TripService} from '../../services/tripService';
@@ -11,10 +11,10 @@ import {UserFactory} from '../../services/userFactory';
 export class PropertyDetailsPage {
 
     static get parameters() {
-        return [[NavController], [NavParams], [PropertyService], [TripService], [UserFactory]];
+        return [[NavController], [NavParams], [PropertyService], [TripService], [UserFactory], [ViewController]];
     }
 
-    constructor(nav, navParams, propertyService, tripService, userFactory) {
+    constructor(nav, navParams, propertyService, tripService, userFactory, viewController) {
         this.nav = nav;
         this.propertyService = propertyService;
         this.tripService = tripService;
@@ -24,7 +24,7 @@ export class PropertyDetailsPage {
         this.endDate = new Date();
         this.dateChange = false;
         this.userFactory = userFactory;
-        console.log(userFactory);
+        this.viewController = viewController;
     }
 
     startDate() {
@@ -34,7 +34,7 @@ export class PropertyDetailsPage {
         );
     }
 
-    startDate() {
+    endDate() {
         DatePicker.show({ date: this.endDate, mode: 'date'}).then(
           date => { this.endDate = date; },
           error => { console.log(error); }
@@ -56,7 +56,7 @@ export class PropertyDetailsPage {
     storeTrip(id) {
       this.tripService.create(id, this.country.name, this.startDate, this.endDate).subscribe(
         data => {
-          console.log(data);
+            this.viewController.dismiss();
         },
         error => this.error(error)
       );

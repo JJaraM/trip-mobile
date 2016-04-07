@@ -338,6 +338,16 @@ h1{
 
 .places-menu {
 
+  .time-sidemenu {
+    display: flex;
+    color: #FFF;
+    font-size: 1.2rem;
+  }
+
+  .item-inner {
+      padding-right: 2%;
+  }
+
   ion-list {
     margin: -1px 0 0px 0;
   }
@@ -375,6 +385,7 @@ h1{
       color: #FFF;
       font-size: 1.2rem;
       font-style: oblique;
+      padding-right: 5%;
     }
   }
 
@@ -444,12 +455,6 @@ h1{
     float: right;
     padding-right: 3px;
   }
-
-
-
-
-
-
 
 
 

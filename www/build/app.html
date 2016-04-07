@@ -1,35 +1,37 @@
-<ion-menu [content]="content" class="places-menu" >
-
+<ion-menu [content]="content" class="places-menu">
   <ion-toolbar>
-    <!--<ion-title>Places</ion-title>-->
     <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)"></ion-searchbar>
   </ion-toolbar>
-
   <ion-content>
-    <ion-list>
+
+    <ion-list [hidden]="!(now.length > 0)">
       <ion-list-header>
-        Today (6)
+        Today ({{ now.length }})
       </ion-list-header>
-      <ion-item *ngFor="#p of pages">
+      <ion-item *ngFor="#p of now">
         <ion-avatar item-left>
-          <img class="quick-place-img" [src]="p.img"/>
+          <img class="quick-place-img" [src]="p.url"/>
         </ion-avatar>
-        <h2 [innerHTML]="p.name"></h2>
-        <p [innerHTML]="p.time"></p>
+        <h2 [innerHTML]="p.place.name"></h2>
+        <div class="time-sidemenu">
+          <p [innerHTML]="p.startDate | date:'HH:mm'"></p>
+           to
+          <p [innerHTML]="p.endDate | date:'HH:mm'"></p>
+        </div>
         <button icon available item-right></button>
       </ion-item>
     </ion-list>
 
-    <ion-list>
+    <ion-list [hidden]="!(before.length > 0)">
       <ion-list-header>
-        Before (6)
+        Before ({{ before.length }})
       </ion-list-header>
-      <ion-item *ngFor="#p of pages">
+      <ion-item *ngFor="#p of before">
         <ion-avatar item-left>
-          <img class="quick-place-img" [src]="p.img"/>
+          <img class="quick-place-img" [src]="p.url"/>
         </ion-avatar>
-        <h2 [innerHTML]="p.name"></h2>
-        <p [innerHTML]="p.time"></p>
+        <h2 [innerHTML]="p.place.name"></h2>
+        <p [innerHTML]="p.startDate | date:'HH:mm'"></p>
         <button icon past item-right></button>
       </ion-item>
     </ion-list>
@@ -37,5 +39,4 @@
 
   </ion-content>
 </ion-menu>
-
-<ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"  (click)="fetchRecentPlaces()"></ion-nav>

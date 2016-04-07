@@ -1,7 +1,4 @@
 <ion-navbar *navbar hideBackButton>
-  <button menuToggle="leftMenu">
-   <ion-icon name='menu'></ion-icon>
- </button>
   <ion-title>Welcome {{ name }}</ion-title>
 </ion-navbar>
 
@@ -11,35 +8,53 @@
 
     <ion-slide *ngFor="#trip of trips">
 
-
-
-
-
-
-
-
-
-
-
+      <div class="slide-title">{{ trip.placeLocation }}</div>
 
       <ion-row>
         <ion-col width-33>
-          <div (click)="createTrip()" class="translucent-item item-text">
+          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d1c4941735')" class="translucent-item item-text">
             <img src="img/icons/restaurant/01.png">
             <div>Restaurants</div>
           </div>
         </ion-col>
-
         <ion-col width-33>
-          <div (click)="createTrip()" class="translucent-item item-text">
+          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d163941735')" class="translucent-item item-text">
             <img src="img/icons/park/01.png">
             <div>Parks</div>
           </div>
         </ion-col>
+        <ion-col width-33>
+          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d181941735')" class="translucent-item item-text">
+            <img src="img/icons/museum/01.png">
+            <div>Museum</div>
+          </div>
+        </ion-col>
       </ion-row>
 
-    </ion-slide>
+      <ion-row>
+        <ion-col width-33>
+          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d17c941735')" class="translucent-item item-text">
+            <img src="img/icons/casino/01.png">
+            <div>Casino</div>
+          </div>
+        </ion-col>
 
+        <ion-col width-33>
+          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d11f941735')" class="translucent-item item-text">
+            <img src="img/icons/night-club/01.png">
+            <div>Nightclub</div>
+          </div>
+        </ion-col>
+
+        <ion-col width-33>
+          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d116941735')" class="translucent-item item-text">
+            <img src="img/icons/bar/01.png">
+            <div>Bar</div>
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-slide>
 
     <ion-slide>
       <div class="destination">Add new destination</div>
@@ -49,7 +64,5 @@
         </a>
       </div>
     </ion-slide>
-
-
   </ion-slides>
 </ion-content>

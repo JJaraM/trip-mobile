@@ -1,5 +1,5 @@
 import {OnInit} from 'angular2/core';
-import {Page, NavController, NavParams, Modal} from 'ionic-framework/ionic';
+import {Page, NavController, NavParams, Modal, ViewController} from 'ionic-framework/ionic';
 import {PropertyDetailsPage} from '../property-details/property-details';
 import {PropertyService} from '../../services/property-service';
 
@@ -9,12 +9,13 @@ import {PropertyService} from '../../services/property-service';
 export class PropertyListPage {
 
   static get parameters() {
-    return [[NavController], [NavParams], [PropertyService]];
+    return [[NavController], [NavParams], [PropertyService], [ViewController]];
   }
 
-  constructor(nav, navParams, propertyService) {
+  constructor(nav, navParams, propertyService, viewController) {
     this.nav = nav;
     this.propertyService = propertyService;
+    this.viewController = viewController;
     this.placeSearch = '';
     this.hidePlaceSearch = true;
     this.broker;
@@ -22,6 +23,7 @@ export class PropertyListPage {
   }
 
   selectPlace(country) {
+    this.viewController.dismiss();
     let modal = Modal.create(PropertyDetailsPage, country);
     this.nav.present(modal);
   }

@@ -71,13 +71,14 @@ export class LoginPage {
 
   error(error) {
     if (error.status == 404) {
-      this.alertService.ok('error.invalid.account.title', 'error.invalid.account.subTitle', this.nav);
+      this.alertService.ok('messages.login.error.invalid.account.title', 'messages.login.error.invalid.account.subTitle', this.nav);
     } else if (error.status == 200 ) {
       this.alertService.serverDown(this.nav);
     }
   }
 
   storeSession(data) {
+    console.log(data.id);
     this.userFactory.storeInSession(data.id, data.email, data.name);
     this.nav.push(WelcomePage);
   }

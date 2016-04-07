@@ -6,7 +6,7 @@ import {BrokerListPage} from './pages/broker-list/broker-list';
 import {FavoriteListPage} from './pages/favorite-list/favorite-list';
 import {PropertyService} from './services/property-service';
 import {LoginService} from './services/loginService';
-import {TripService} from './services/tripService';
+
 import {BrokerService} from './services/broker-service';
 import {LoginPage} from './pages/login/login';
 import {provide} from 'angular2/core';
@@ -16,6 +16,7 @@ import {RouteConfig, RouterLink, RouterOutlet } from 'angular2/router';
 import {DatePicker} from 'ionic-native';
 
 import {AlertService} from './services/alert-service';
+import {TripService} from './services/tripService';
 
 /*Factories*/
 import {UserFactory} from './services/userFactory';
@@ -41,10 +42,10 @@ import {UserFactory} from './services/userFactory';
 class MyApp {
 
   static get parameters() {
-    return [[IonicApp], [Platform], [Http], [TranslateService]];
+    return [[IonicApp], [Platform], [Http], [TranslateService],[TripService],[UserFactory]];
   }
 
-  constructor(app, platform, http, translate) {
+  constructor(app, platform, http, translate, tripService, userFactory) {
 
     // set up our app
     this.app = app;
@@ -53,18 +54,38 @@ class MyApp {
     this.platform = platform;
     this.translationConfig();
     this.initializeApp();
-
-    // set our app's pages
-    this.pages = [
-      {title: 'Login', component: LoginPage, icon: "home", img:"https://i.ytimg.com/vi/lfUIGflbwx8/maxresdefault.jpg", name:"Tower", time:"(13:00 - 13:30)"},
-      {title: 'Welcome', component: WelcomePage, icon: "bookmark", img:"https://www.visitbritainshop.com/espana/~/media/91f5c92f5c6b4894911c474e23f5849a.ashx?as=0&h=349&w=620", name:"London Eye", time:"(14:00 - 14:30)"},
-      {title: 'Properties', component: PropertyListPage, icon: "home", img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Palace_of_Westminster,_London_-_Feb_2007.jpg/980px-Palace_of_Westminster,_London_-_Feb_2007.jpg", name:"Palacio de Westminster", time:"(14:30 - 16:00)"},
-      {title: 'Create-Trip', component: PropertyDetailsPage, icon: "home", img:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Buckingham_Palace_from_gardens,_London,_UK_-_Diliff.jpg/300px-Buckingham_Palace_from_gardens,_London,_UK_-_Diliff.jpg", name:"Palacio de Buckingham", time:"(16:00 - 16:30)"},
-      {title: 'Brokers', component: BrokerListPage, icon: "people", img:"http://www.sightseeingtours.co.uk/images/products/gt-london-attracts/xl-p-474-Churchill-Cabinet-War-Rooms.jpg", name:"Churchill War Rooms", time:"(16:30 - 19:00)"}
-    ];
-
+    this.searchQuery = '';
+    this.pages = [];
     // make PropertyListPage the root (or first) page
     this.rootPage = LoginPage;
+    this.tripService = tripService;
+    this.userFactory = userFactory;
+    this.initNotificationList();
+  }
+
+  initNotificationList() {
+    this.now = [];
+    this.before = [];
+  }
+
+  getItems(searchbar) {
+
+    // set q to the value of the searchbar
+    var q = searchbar.value;
+
+    // if the value is an empty string don't filter the items
+    if (q.trim() == '') {
+      this.userFactory.setNewPlace(true);
+      this.fetchRecentPlaces();
+      return;
+    }
+
+    this.now = this.now.filter((v) => {
+      if (v.place.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    })
   }
 
   translationConfig() {
@@ -85,4 +106,34 @@ class MyApp {
     nav.setRoot(page.component);
   }
 
+  fetchRecentPlaces() {
+    if ((this.places == undefined || this.places.length == 0) && this.userFactory.getNewPlace() ) {
+        this.userFactory.findUserInSession().then((resultSet) => {
+          this.tripService.fetchByTrip(resultSet.res.rows[0].id,'').subscribe(
+            data => {
+              this.initNotificationList();
+              for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                item.url = item.place.photos[0].prefix + '36x36' + item.place.photos[0].suffix
+                var endDate = new Date(item.endDate);
+                if (this.today(endDate)) {
+                  this.now.push(item);
+                } else {
+                  this.before.push(item);
+                }
+              }
+
+            }
+          );
+        }, (err) => {
+          console.log('Error: ', err);
+        });
+        this.userFactory.setNewPlace(false);
+      }
+    }
+
+    today(td){
+      var d = new Date();
+      return td.getDate() == d.getDate() && td.getMonth() == d.getMonth() && td.getFullYear() == d.getFullYear();
+    }
 }
