@@ -1,13 +1,12 @@
 import {App, IonicApp, Platform} from 'ionic-framework/ionic';
 import {WelcomePage} from './pages/welcome/welcome';
+
 import {PropertyListPage} from './pages/property-list/property-list';
 import {PropertyDetailsPage} from './pages/property-details/property-details';
-import {BrokerListPage} from './pages/broker-list/broker-list';
-import {FavoriteListPage} from './pages/favorite-list/favorite-list';
 import {PropertyService} from './services/property-service';
 import {LoginService} from './services/loginService';
 
-import {BrokerService} from './services/broker-service';
+
 import {LoginPage} from './pages/login/login';
 import {provide} from 'angular2/core';
 import {TranslateService, TranslateLoader, TranslateStaticLoader, TranslatePipe} from 'ng2-translate/ng2-translate';
@@ -17,6 +16,7 @@ import {DatePicker} from 'ionic-native';
 
 import {AlertService} from './services/alert-service';
 import {TripService} from './services/tripService';
+import {TravelService} from './services/travel-service';
 
 /*Factories*/
 import {UserFactory} from './services/userFactory';
@@ -26,7 +26,7 @@ import {UserFactory} from './services/userFactory';
   config: {},
   providers:
   [
-    PropertyService, BrokerService, LoginService, TripService, AlertService, UserFactory,
+    PropertyService, LoginService, TripService, TravelService, AlertService, UserFactory,
     provide(TranslateLoader, {
       useFactory: (http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
       deps: [Http]
@@ -42,10 +42,10 @@ import {UserFactory} from './services/userFactory';
 class MyApp {
 
   static get parameters() {
-    return [[IonicApp], [Platform], [Http], [TranslateService],[TripService],[UserFactory]];
+    return [[IonicApp], [Platform], [Http], [TranslateService], [TripService],  [TravelService], [UserFactory]];
   }
 
-  constructor(app, platform, http, translate, tripService, userFactory) {
+  constructor(app, platform, http, translate, tripService, travelService, userFactory) {
 
     // set up our app
     this.app = app;
@@ -59,6 +59,7 @@ class MyApp {
     // make PropertyListPage the root (or first) page
     this.rootPage = LoginPage;
     this.tripService = tripService;
+    this.travelService = travelService;
     this.userFactory = userFactory;
     this.initNotificationList();
   }
@@ -109,7 +110,7 @@ class MyApp {
   fetchRecentPlaces() {
     if ((this.places == undefined || this.places.length == 0) && this.userFactory.getNewPlace() ) {
         this.userFactory.findUserInSession().then((resultSet) => {
-          this.tripService.fetchByTrip(resultSet.res.rows[0].id,'').subscribe(
+          this.travelService.fetchAll(resultSet.res.rows[0].id,'').subscribe(
             data => {
               this.initNotificationList();
               for (var i = 0; i < data.length; i++) {

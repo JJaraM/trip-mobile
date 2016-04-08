@@ -13,6 +13,10 @@ export class TripService {
     this.http = http;
   }
 
+  handleError(error) {
+    return Observable.throw(error.status);
+  }
+
   findAllByUser(userId) {
     return this.http.get('http://localhost:8083/trip/api/trip/fetchAllByUser?userId='+encodeURIComponent(userId))
     .map(data => data.json())
@@ -25,26 +29,10 @@ export class TripService {
     .catch(this.handleError);
   }
 
-  handleError(error) {
-    return Observable.throw(error.status);
-  }
-
-  fetchByTrip(userId, tripId) {
-    return this.http.get('http://localhost:8083/trip/api/trip/fetchByTrip?userId='+userId)
-    .map(data => data.json())
-    .catch(this.handleError);
-  }
-
   fetchNearPlacesByLocationNameAndCategory(tripId, categoryId) {
     return this.http.get('http://localhost:8083/trip/api/place/fetchNearPlacesByLocationNameAndCategory?tripId='+tripId+"&categoryId="+categoryId)
-    .map(data => data.json())
-    .catch(this.handleError);
-  }
-
-  schedulePlace(tripId, placeId, startDate, endDate) {
-    return this.http.post('http://localhost:8083/trip/api/trip/schedulePlace?tripId='+tripId+"&placeId="+placeId+"&startDate="+startDate+"&endDate="+endDate)
-    .map(data => data)
-    .catch(this.handleError);
+      .map(data => data.json())
+      .catch(this.handleError);
   }
 
 }

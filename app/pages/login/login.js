@@ -78,7 +78,6 @@ export class LoginPage {
   }
 
   storeSession(data) {
-    console.log(data.id);
     this.userFactory.storeInSession(data.id, data.email, data.name);
     this.nav.push(WelcomePage);
   }

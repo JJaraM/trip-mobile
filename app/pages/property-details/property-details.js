@@ -1,5 +1,4 @@
 import {Page, NavController, NavParams, Alert, ActionSheet, ViewController} from 'ionic-framework/ionic';
-import {BrokerDetailsPage} from '../broker-details/broker-details';
 import {PropertyService} from '../../services/property-service';
 import {TripService} from '../../services/tripService';
 import {DatePicker} from 'ionic-native';
@@ -60,6 +59,10 @@ export class PropertyDetailsPage {
         },
         error => this.error(error)
       );
+    }
+
+    dismiss() {
+      this.viewController.dismiss();
     }
 
 }

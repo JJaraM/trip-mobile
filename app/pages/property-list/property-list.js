@@ -56,6 +56,10 @@ export class PropertyListPage {
     console.log(err);
   }
 
+  dismiss() {
+    this.viewController.dismiss();
+  }
+
   initCountries() {
     this.countries = [
       {

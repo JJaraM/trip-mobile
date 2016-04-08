@@ -57,11 +57,9 @@ export class PlaceListPage {
   }
 
   schedule(place) {
-    this.cancel();
-    let data = {_placeId: place.referenceId, _placeName: place.name, _tripId: this.tripId};
+    let data = {_placeId: place.referenceId, _placeName: place.name, _tripId: this.tripId, _viewController : this.viewController };
     let modal = Modal.create(PlaceCreate, data);
     this.nav.present(modal);
-    this.cancel();
   }
 
 }
