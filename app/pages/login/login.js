@@ -6,10 +6,7 @@ import {UserFactory} from '../../services/userFactory';
 import {AlertService} from '../../services/alert-service';
 import $ from 'jquery/dist/jquery';
 
-@Page({
-  templateUrl: 'build/pages/login/login.html',
-  pipes: [TranslatePipe]
-})
+@Page({ templateUrl: 'build/pages/login/login.html', pipes: [TranslatePipe] })
 export class LoginPage {
 
   static get parameters() {
@@ -57,7 +54,7 @@ export class LoginPage {
   signUp() {
     if (this.isEmpty(this.name)) {
       this.alertService.ok('messages.login.name.title', 'messages.login.name.subTitle', this.nav);
-    } else if (this.isEmpty(this.password)) {
+    } else if (this.isEmpty(this.email)) {
       this.alertService.ok('messages.login.email.title', 'messages.login.email.subTitle', this.nav);
     } else if (this.isEmpty(this.password)) {
       this.alertService.ok('messages.login.password.title', 'messages.login.password.subTitle', this.nav);

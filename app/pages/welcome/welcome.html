@@ -12,15 +12,15 @@
 
       <ion-row>
         <ion-col width-33>
-          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d1c4941735')" class="translucent-item item-text">
+          <div (click)="selectPlace(trip.id, 'FOOD')" class="translucent-item item-text">
             <img src="img/icons/restaurant/01.png">
-            <div>Restaurants</div>
+            <div>Eating</div>
           </div>
         </ion-col>
         <ion-col width-33>
-          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d163941735')" class="translucent-item item-text">
+          <div (click)="selectPlace(trip.id, 'OUT_SIDE')" class="translucent-item item-text">
             <img src="img/icons/park/01.png">
-            <div>Parks</div>
+            <div>Outside</div>
           </div>
         </ion-col>
         <ion-col width-33>
@@ -52,8 +52,19 @@
             <div>Bar</div>
           </div>
         </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-33>
+          <div (click)="selectPlace(trip.id, '4bf58dd8d48988d17f941735')" class="translucent-item item-text">
+            <img src="img/icons/cinema/01.png">
+            <div>Entertainment</div>
+          </div>
+        </ion-col>
 
       </ion-row>
+
+
     </ion-slide>
 
     <ion-slide>

@@ -4,7 +4,7 @@
   </ion-title>
 
   <ion-buttons start>
-    <button (click)="dismiss()">
+    <button (click)="cancel()">
       <span primary showWhen="ios">Cancel</span>
       <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
     </button>
@@ -13,12 +13,9 @@
 
 <ion-content>
   <ion-searchbar
-    [(ngModel)]="placeSearch"
-    [hideCancelButton]="shouldHideCancel"
-    (input)="onSearch($event)"
-    (cancel)="onCancel($event)">
+    (input)="onSearch($event)">
   </ion-searchbar>
-  <ion-item-group>
+  <ion-list>
     <div *ngFor="#c of countries">
       <ion-item-divider light>{{ c.country.letter }}</ion-item-divider>
       <ion-item *ngFor="#item of c.country.items" (click)="selectPlace(item)">
@@ -26,5 +23,5 @@
         <p>{{ item.from }}</p>
       </ion-item>
     </div>
-  </ion-item-group>
+  </ion-list>
 </ion-content>

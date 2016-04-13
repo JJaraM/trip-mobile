@@ -20,6 +20,12 @@
           <img [src]="place.url">
         </ion-avatar>
         <h2>{{ place.name }}</h2>
+        <p class="rating">
+          Rating: {{place.rating}}
+        </p>
+        <p>
+          {{place.completeAddress}}
+        </p>
       </ion-item>
       <ion-item-options>
         <button primary (click)="schedule(place)">

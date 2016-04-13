@@ -1,11 +1,8 @@
-import {OnInit} from 'angular2/core';
 import {Page, NavController, NavParams, Modal, ViewController} from 'ionic-framework/ionic';
 import {PropertyDetailsPage} from '../property-details/property-details';
 import {PropertyService} from '../../services/property-service';
 
-@Page({
-  templateUrl: 'build/pages/property-list/property-list.html'
-})
+@Page({ templateUrl: 'build/pages/property-list/property-list.html' })
 export class PropertyListPage {
 
   static get parameters() {
@@ -14,18 +11,18 @@ export class PropertyListPage {
 
   constructor(nav, navParams, propertyService, viewController) {
     this.nav = nav;
-    this.propertyService = propertyService;
     this.viewController = viewController;
+    this.navParams = navParams;
+    this.propertyService = propertyService;
     this.placeSearch = '';
     this.hidePlaceSearch = true;
-    this.broker;
     this.initCountries();
   }
 
   selectPlace(country) {
-    this.viewController.dismiss();
-    let modal = Modal.create(PropertyDetailsPage, country);
-    this.nav.present(modal);
+    //var data = {_property-list-view: this.viewController, _place: country};
+    this.nav.present(Modal.create(PropertyDetailsPage, country));
+
   }
 
   onSearch(searchbar) {
@@ -49,6 +46,7 @@ export class PropertyListPage {
 
   format(data) {
     this.countries = [];
+    console.log(data);
     this.countries.push(data);
   }
 
@@ -56,7 +54,7 @@ export class PropertyListPage {
     console.log(err);
   }
 
-  dismiss() {
+  cancel() {
     this.viewController.dismiss();
   }
 

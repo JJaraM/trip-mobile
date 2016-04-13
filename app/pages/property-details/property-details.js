@@ -57,7 +57,9 @@ export class PropertyDetailsPage {
         data => {
             this.viewController.dismiss();
         },
-        error => this.error(error)
+        error => {
+            console.log(error);
+        }
       );
     }
 

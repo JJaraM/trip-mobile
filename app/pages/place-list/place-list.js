@@ -2,11 +2,11 @@ import {Page, NavController, NavParams, Modal, ViewController} from 'ionic-frame
 import {TripService} from '../../services/tripService';
 import {PlaceCreate} from '../place-create/place-create';
 
-@Page({ templateUrl: 'build/pages/placeList/placeList.html' })
+@Page({ templateUrl: 'build/pages/place-list/place-list.html' })
 export class PlaceListPage {
 
   static get parameters() {
-    return [[NavController], [NavParams], [TripService],[ViewController]];
+    return [[NavController], [NavParams], [TripService], [ViewController]];
   }
 
   constructor(nav, navParams, tripService, viewController) {
@@ -26,7 +26,6 @@ export class PlaceListPage {
 
   initVars() {
     this.places = [];
-    this.searchQuery = '';
   }
 
   getItems(searchbar) {
@@ -45,7 +44,11 @@ export class PlaceListPage {
         this.places = data;
         this.places.forEach(function (place) {
           place.url = place.photos[0].prefix + '36x36' + place.photos[0].suffix;
+          place.completeAddress = place.location.address;
+          place.completeAddress += (place.location.crossStreet != undefined && place.location.crossStreet != 'null' && place.location.crossStreet.trim().length > 0 ) 
+          ? ' (' + place.location.crossStreet + ')'             : '';
         });
+        console.log(this.places);
         if (this.isSearching)
           this.filter();
       }

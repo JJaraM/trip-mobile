@@ -112,11 +112,11 @@ h1{
 }
 
 .ios .terms {
-  padding-top: 20%;
+  padding-top: 15%;
 }
 
 .ios .show-signUp {
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .md .terms {
@@ -306,33 +306,7 @@ h1{
   background: #80b971;
 }
 
-.create-trip {
-  .button, .button:hover, .button.activated {
-    background: transparent;
-    border: solid 1px;
-    font-size: 1.5em;
-  }
 
-
-  .md .button {
-    margin-right: 7%;
-    margin-left: 7%;
-  }
-
-
-  .button, .button:hover {
-    color: #000;
-    border: 0;
-    font-size: inherit;
-    padding: 0;
-  }
-
-  .ios .button {
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-}
 
 
 
@@ -459,3 +433,29 @@ h1{
 
 
 }
+
+
+
+.toolbar-background {
+  background: #444;
+  border-color: #444;
+}
+
+.toolbar-title {
+  color: #FFF;
+}
+
+
+h1[primary], h2[primary], h3[primary], h4[primary], h5[primary], h6[primary],
+p[primary],
+span[primary],
+a:not([button])[primary],
+small[primary],
+b[primary],
+i[primary],
+strong[primary],
+em[primary],
+sub[primary],
+sup[primary],
+ion-icon[primary] {
+  color: #9f9f9f !important; }

@@ -35,4 +35,10 @@ export class TripService {
       .catch(this.handleError);
   }
 
+  fetchLastPlacesByTripAndCategories(tripId, categories) {
+    return this.http.get('http://localhost:8083/trip/api/place/fetchLastPlacesByTripAndCategories?tripId='+tripId+"&categories="+categories)
+      .map(data => data.json())
+      .catch(this.handleError);
+  }
+
 }

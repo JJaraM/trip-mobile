@@ -1,7 +1,6 @@
 import {App, IonicApp, Platform} from 'ionic-framework/ionic';
 import {WelcomePage} from './pages/welcome/welcome';
 
-import {PropertyListPage} from './pages/property-list/property-list';
 import {PropertyDetailsPage} from './pages/property-details/property-details';
 import {PropertyService} from './services/property-service';
 import {LoginService} from './services/loginService';
@@ -36,7 +35,6 @@ import {UserFactory} from './services/userFactory';
 })
 @RouteConfig([
   {path: '/', component: WelcomePage, as: 'WelcomePage'},
-  {path: '/trip', component: PropertyListPage, as: 'PropertyListPage'},
   {path: '/trip/create', component: PropertyDetailsPage, as: 'PropertyDetailsPage'}
 ])
 class MyApp {

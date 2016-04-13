@@ -1,9 +1,9 @@
 import {Page, NavController, NavParams, Modal, ViewController} from 'ionic-framework/ionic';
 import {ROUTER_DIRECTIVES, Router, Location, RouteConfig} from "angular2/router";
-import {PropertyListPage} from '../../pages/property-list/property-list';
-import {PlaceListPage} from '../../pages/placeList/placeList';
 import {UserFactory} from '../../services/userFactory';
 import {TripService} from '../../services/tripService';
+import {PlacesSubCategory} from '../place-sub-category/place-sub-category';
+import {PropertyListPage} from '../property-list/property-list';
 
 @Page({
     templateUrl: 'build/pages/welcome/welcome.html'
@@ -11,14 +11,15 @@ import {TripService} from '../../services/tripService';
 export class WelcomePage {
 
     static get parameters() {
-        return [[NavController], [NavParams], [Router],[UserFactory],[TripService]];
+        return [[NavController], [NavParams], [Router],[UserFactory],[TripService], [ViewController]];
     }
 
-    constructor(nav, navParams, router, userFactory, tripService) {
+    constructor(nav, navParams, router, userFactory, tripService, viewController) {
         this.nav = nav;
         this.router = router;
         this.userFactory = userFactory;
         this.tripService = tripService;
+        this.viewController = viewController;
         this.trips = [];
         this.name = '';
         this.setName();
@@ -26,14 +27,11 @@ export class WelcomePage {
     }
 
     createTrip() {
-      let modal = Modal.create(PropertyListPage);
-      this.nav.present(modal);
+      this.nav.present(Modal.create(PropertyListPage));
     }
 
-    selectPlace(tripId, categoryId) {
-      let data = {_tripId : tripId, _categoryId : categoryId}
-      let modal = Modal.create(PlaceListPage, data);
-      this.nav.present(modal);
+    selectPlace(tripId, subCategory) {
+      this.nav.present(Modal.create(PlacesSubCategory, {_tripId : tripId, _subCategory : subCategory}));
     }
 
     setName() {

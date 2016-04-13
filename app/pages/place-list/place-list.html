@@ -12,10 +12,7 @@
 </ion-toolbar>
 
 <ion-content class="places-list">
-  <ion-searchbar [hidden]="(places.length == 0 && !isSearching)"
-    [(ngModel)]="searchQuery" (input)="getItems($event)">
-  </ion-searchbar>
-
+  <ion-searchbar [hidden]="(places.length == 0 && !isSearching)" (input)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="#place of places">
       <ion-item>
@@ -23,6 +20,12 @@
           <img [src]="place.url">
         </ion-avatar>
         <h2>{{ place.name }}</h2>
+        <p class="rating">
+          Rating: {{place.rating}}
+        </p>
+        <p>
+          {{place.completeAddress}}
+        </p>
       </ion-item>
       <ion-item-options>
         <button primary (click)="schedule(place)">
@@ -45,5 +48,4 @@
       There is no more places
     </div>
   </div>
-
 </ion-content>

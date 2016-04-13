@@ -9381,6 +9381,57 @@ body {
   text-align: center;
   padding-top: 5%; }
 
+.places-list .rating {
+  color: #C17B12; }
+
+.places-list #star-five {
+  margin: 50px 0;
+  position: relative;
+  display: block;
+  color: red;
+  width: 0px;
+  height: 0px;
+  border-right: 100px solid transparent;
+  border-bottom: 70px  solid red;
+  border-left: 100px solid transparent;
+  -moz-transform: rotate(35deg);
+  -webkit-transform: rotate(35deg);
+  -ms-transform: rotate(35deg);
+  -o-transform: rotate(35deg); }
+
+.places-list #star-five:before {
+  border-bottom: 80px solid red;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -45px;
+  left: -65px;
+  display: block;
+  content: '';
+  -webkit-transform: rotate(-35deg);
+  -moz-transform: rotate(-35deg);
+  -ms-transform: rotate(-35deg);
+  -o-transform: rotate(-35deg); }
+
+.places-list #star-five:after {
+  position: absolute;
+  display: block;
+  color: red;
+  top: 3px;
+  left: -105px;
+  width: 0px;
+  height: 0px;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid red;
+  border-left: 100px solid transparent;
+  -webkit-transform: rotate(-70deg);
+  -moz-transform: rotate(-70deg);
+  -ms-transform: rotate(-70deg);
+  -o-transform: rotate(-70deg);
+  content: ''; }
+
 body, p {
   font-family: 'Ubuntu', sans-serif;
   color: #FFF; }
@@ -9452,10 +9503,10 @@ h1 {
   padding-right: 10%; }
 
 .ios .terms {
-  padding-top: 20%; }
+  padding-top: 15%; }
 
 .ios .show-signUp {
-  padding-top: 10%; }
+  padding-top: 5%; }
 
 .md .terms {
   padding-top: 37%; }
@@ -9596,25 +9647,6 @@ h1 {
 .hex.hex-3 {
   background: #80b971; }
 
-.create-trip .button, .create-trip .button:hover, .create-trip .button.activated {
-  background: transparent;
-  border: solid 1px;
-  font-size: 1.5em; }
-
-.create-trip .md .button {
-  margin-right: 7%;
-  margin-left: 7%; }
-
-.create-trip .button, .create-trip .button:hover {
-  color: #000;
-  border: 0;
-  font-size: inherit;
-  padding: 0; }
-
-.create-trip .ios .button {
-  margin-right: 0;
-  margin-left: 0; }
-
 .places-menu .time-sidemenu {
   display: -webkit-box;
   display: -webkit-flex;
@@ -9710,3 +9742,43 @@ h1 {
 .places-menu .time {
   float: right;
   padding-right: 3px; }
+
+.toolbar-background {
+  background: #444;
+  border-color: #444; }
+
+.toolbar-title {
+  color: #FFF; }
+
+h1[primary], h2[primary], h3[primary], h4[primary], h5[primary], h6[primary],
+p[primary],
+span[primary],
+a:not([button])[primary],
+small[primary],
+b[primary],
+i[primary],
+strong[primary],
+em[primary],
+sub[primary],
+sup[primary],
+ion-icon[primary] {
+  color: #9f9f9f !important; }
+
+.create-trip .button, .create-trip .button:hover, .create-trip .button.activated {
+  background: transparent;
+  border: solid 1px;
+  font-size: 1.5em; }
+
+.create-trip .md .button {
+  margin-right: 7%;
+  margin-left: 7%; }
+
+.create-trip .button, .create-trip .button:hover {
+  color: #000;
+  border: 0;
+  font-size: inherit;
+  padding: 0; }
+
+.create-trip .ios .button {
+  margin-right: 0;
+  margin-left: 0; }

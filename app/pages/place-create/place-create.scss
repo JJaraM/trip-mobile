@@ -1,0 +1,28 @@
+.create-trip {
+
+  .button, .button:hover, .button.activated {
+    background: transparent;
+    border: solid 1px;
+    font-size: 1.5em;
+  }
+
+
+  .md .button {
+    margin-right: 7%;
+    margin-left: 7%;
+  }
+
+
+  .button, .button:hover {
+    color: #000;
+    border: 0;
+    font-size: inherit;
+    padding: 0;
+  }
+
+  .ios .button {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+}
